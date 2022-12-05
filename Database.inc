@@ -131,12 +131,12 @@ function getEmployees()
         }
 
     } else {
-        $stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join ip_3.room on employee.room=room.room_id");
+        $stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join `room` on employee.room=room.room_id");
     }
     if ($poradi) {
-        $stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join ip_3.room on employee.room=room.room_id order by $orderpodle $sorting_smer");
+        $stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join `room` on employee.room=room.room_id order by $orderpodle $sorting_smer");
     };
-    /*$stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join ip_3.room on employee.room=room.room_id");*/
+    /*$stmt = $pdo->query("select employee_id, employee.name, surname, job, room.name as 'room_name', room.phone as 'room_phone' from employee join `room` on employee.room=room.room_id");*/
     return $stmt->fetchAll();
 }
 
@@ -172,7 +172,7 @@ function getEmployeeKeys($employee_id)
 {
     global $pdo;
     global $db;
-    $stmt = $pdo->query("select * from room join ip_3.key on ip_3.key.room=room.room_id where ip_3.key.employee=$employee_id");
+    $stmt = $pdo->query("select * from room join `key` on `key`.room=room.room_id where .employee=$employee_id");
     return $stmt->fetchAll();
 }
 
